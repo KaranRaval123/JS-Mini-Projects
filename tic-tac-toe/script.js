@@ -10,15 +10,14 @@ var d8 = document.querySelector('#di8');
 var d9 = document.querySelector('#di9');
 function checkWin(player) {
     if (
-      // Horizontal lines
       (d1.innerText === player && d2.innerText === player && d3.innerText === player) ||
       (d4.innerText === player && d5.innerText === player && d6.innerText === player) ||
       (d7.innerText === player && d8.innerText === player && d9.innerText === player) ||
-      // Vertical lines
+        
       (d1.innerText === player && d4.innerText === player && d7.innerText === player) ||
       (d2.innerText === player && d5.innerText === player && d8.innerText === player) ||
       (d3.innerText === player && d6.innerText === player && d9.innerText === player) ||
-      // Diagonal lines
+
       (d1.innerText === player && d5.innerText === player && d9.innerText === player) ||
       (d3.innerText === player && d5.innerText === player && d7.innerText === player)
     ) {
