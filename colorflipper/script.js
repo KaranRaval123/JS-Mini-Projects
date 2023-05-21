@@ -6,4 +6,3 @@ flipcolor = () =>{
     document.body.style.backgroundColor = color;
     document.getElementById('h').innerText=color;
 }
-// flipcolor();
