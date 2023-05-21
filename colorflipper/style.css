@@ -1,0 +1,28 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+h1{
+    width: 100%;
+    margin-top: 100px;
+    background-color: black;
+    color: whitesmoke;
+    font-family: sans-serif;
+    margin-bottom: 150px;
+}
+#h{
+    color: rgb(0, 183, 255);
+}
+#btn{
+    margin-left: 100px;
+    background-color: transparent;
+    width: 90px;
+    height: 40px;
+    font-weight: bold;
+    padding: 10px;
+    border: solid;
+    border-radius: 10px;
+    font-family: Verdana, sans-serif;
+}
