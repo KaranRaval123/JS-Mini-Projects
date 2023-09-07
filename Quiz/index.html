@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced JavaScript Quiz</title>
+</head>
+<body>
+    <h1>Quiz App</h1>
+    <form id="quizForm">
+        <fieldset>
+            <legend>Question 1: What is a closure in JavaScript?</legend>
+            <label>
+                <input type="radio" name="q1" value="a"> A) A function that has no parameters
+            </label><br>
+            <label>
+                <input type="radio" name="q1" value="b"> B) A function that returns another function
+            </label><br>
+            <label>
+                <input type="radio" name="q1" value="c"> C) A variable declared inside a function
+            </label><br>
+            <label>
+                <input type="radio" name="q1" value="d"> D) A function that is automatically invoked
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Question 2: What is the output of the following code?</legend>
+            <pre>
+                <code>
+function foo() {
+    return bar();
+}
+
+function bar() {
+    return "Hello, World!";
+}
+
+console.log(foo());
+                </code>
+            </pre>
+            <label>
+                <input type="radio" name="q2" value="a"> A) "Hello, World!"
+            </label><br>
+            <label>
+                <input type="radio" name="q2" value="b"> B) ReferenceError: bar is not defined
+            </label><br>
+            <label>
+                <input type="radio" name="q2" value="c"> C) undefined
+            </label><br>
+            <label>
+                <input type="radio" name="q2" value="d"> D) null
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Question 3: What is the purpose of the JSON.parse() method in JavaScript?</legend>
+            <label>
+                <input type="radio" name="q3" value="a"> A) To parse XML data
+            </label><br>
+            <label>
+                <input type="radio" name="q3" value="b"> B) To parse JSON data and convert it into a JavaScript object
+            </label><br>
+            <label>
+                <input type="radio" name="q3" value="c"> C) To convert a JavaScript object into a JSON string
+            </label><br>
+            <label>
+                <input type="radio" name="q3" value="d"> D) To create a new JSON object
+            </label>
+        </fieldset>
+        <button type="submit">Submit</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html> 
