@@ -1,4 +1,4 @@
-document.getElementById("quizForm").addEventListener("submit", function (event) {
+document.getElementById("quizForm").addEventListener("submit", (event) => {
     event.preventDefault();
 
     const answers = {
@@ -6,7 +6,6 @@ document.getElementById("quizForm").addEventListener("submit", function (event) 
         q2: "a",
         q3: "b"
     };
-    let score = 0;
     for (const question in answers) {
         const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
         if (selectedOption) {
