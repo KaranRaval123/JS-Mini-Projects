@@ -1,104 +1,61 @@
-var num = 0;
-var d1 = document.querySelector('#di1');
-var d2 = document.querySelector('#di2');
-var d3 = document.querySelector('#di3');
-var d4 = document.querySelector('#di4');
-var d5 = document.querySelector('#di5');
-var d6 = document.querySelector('#di6');
-var d7 = document.querySelector('#di7');
-var d8 = document.querySelector('#di8');
-var d9 = document.querySelector('#di9');
-function checkWin(player) {
-    if (
-      (d1.innerText === player && d2.innerText === player && d3.innerText === player) ||
-      (d4.innerText === player && d5.innerText === player && d6.innerText === player) ||
-      (d7.innerText === player && d8.innerText === player && d9.innerText === player) ||
-        
-      (d1.innerText === player && d4.innerText === player && d7.innerText === player) ||
-      (d2.innerText === player && d5.innerText === player && d8.innerText === player) ||
-      (d3.innerText === player && d6.innerText === player && d9.innerText === player) ||
+const boxes = document.querySelectorAll(".box");
+const err = document.getElementById("err");
+const playerOne = "🏐";
+const playerTwo = "⚽";
+let counter = 1;
+winner = "";
+let board = [
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+];
 
-      (d1.innerText === player && d5.innerText === player && d9.innerText === player) ||
-      (d3.innerText === player && d5.innerText === player && d7.innerText === player)
-    ) {
-      alert("Player " + player + " wins!");
-      if(player=='O'){
-      document.getElementById('emp').innerText = "Congratulations Player 1 you win!!!";
+function checkWin() {
+  const checkLine = (a, b, c) => a === b && b === c && a !== "";
+
+  for (let i = 0; i < 3; i++) {
+    if (checkLine(board[i][0], board[i][1], board[i][2])) {
+      winner += board[i][0];
     }
-    else{
-        document.getElementById('emp').innerText = "Congratulations Player 2 you win!!!";
+    if (checkLine(board[0][i], board[1][i], board[2][i])) {
+      winner += board[0][i];
     }
-}
   }
-function div1() {
-    num++;
-    let temp = (num%2!=0) ? 'O' : 'X';
-    document.getElementById('di1').innerText = temp ;
-    let col = (temp=='O') ? '#18BC9C' : 'white';
-    document.getElementById('di1').style.color =col;
-    checkWin(temp);
+  if (checkLine(board[0][0], board[1][1], board[2][2])) {
+    winner += board[0][0];
+  }
+  if (checkLine(board[0][2], board[1][1], board[2][0])) {
+    winner += board[0][2];
+  }
+  if (winner === playerOne || winner === playerTwo) {
+    err.textContent = `Player ${winner} wins!`;
+    clearBoard(board);
+    return;
+  }
 }
-function div2() {
-    num++;
-    let temp = (num%2!=0) ? 'O' : 'X';
-    document.getElementById('di2').innerText = temp ;
-    let col = (temp=='O') ? '#18BC9C' : 'white';
-    document.getElementById('di2').style.color =col;
-    checkWin(temp);
+
+function clearBoard(board) {
+  for (let i = 0; i < board.length; i++) {
+    board[i].fill("");
+  }
 }
-function div3() {
-    num++;
-    let temp = (num%2!=0) ? 'O' : 'X';
-    document.getElementById('di3').innerText = temp ;
-    let col = (temp=='O') ? '#18BC9C' : 'white';
-    document.getElementById('di3').style.color =col;
-    checkWin(temp);
-}
-function div4() {
-    num++;
-    let temp = (num%2!=0) ? 'O' : 'X';
-    document.getElementById('di4').innerText = temp ;
-    let col = (temp=='O') ? '#18BC9C' : 'white';
-    document.getElementById('di4').style.color =col;
-    checkWin(temp);
-}
-function div5() {
-    num++;
-    let temp = (num%2!=0) ? 'O' : 'X';
-    document.getElementById('di5').innerText = temp ;
-    let col = (temp=='O') ? '#18BC9C' : 'white';
-    document.getElementById('di5').style.color =col;
-    checkWin(temp);
-}
-function div6() {
-    num++;
-    let temp = (num%2!=0) ? 'O' : 'X';
-    document.getElementById('di6').innerText = temp ;
-    let col = (temp=='O') ? '#18BC9C' : 'white';
-    document.getElementById('di6').style.color =col;
-    checkWin(temp);
-}
-function div7() {
-    num++;
-    let temp = (num%2!=0) ? 'O' : 'X';
-    document.getElementById('di7').innerText = temp ;
-    let col = (temp=='O') ? '#18BC9C' : 'white';
-    document.getElementById('di7').style.color =col;
-    checkWin(temp);
-}
-function div8() {
-    num++;
-    let temp = (num%2!=0) ? 'O' : 'X';
-    document.getElementById('di8').innerText = temp ;
-    let col = (temp=='O') ? '#18BC9C' : 'white';
-    document.getElementById('di8').style.color =col;
-    checkWin(temp);
-}
-function div9() {
-    num++;
-    let temp = (num%2!=0) ? 'O' : 'X';
-    document.getElementById('di9').innerText = temp ;
-    let col = (temp=='O') ? '#18BC9C' : 'white';
-    document.getElementById('di9').style.color =col;
-    checkWin(temp);
-}
+
+const addSymbol = (box, i, j) => {
+  const currentPlayer = counter % 2 === 0 ? playerTwo : playerOne;
+  box.innerText = currentPlayer;
+  board[i][j] = currentPlayer;
+};
+
+boxes.forEach((box, index) => {
+  const i = Math.floor(index / 3);
+  const j = index % 3;
+  box.addEventListener("click", (event) => {
+    if (board[i][j] === "") {
+      addSymbol(event.target, i, j);
+      counter++;
+      if (counter > 4) {
+        checkWin();
+      }
+    }
+  });
+});
