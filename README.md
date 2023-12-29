@@ -1,3 +1,3 @@
 # JS-Mini-Projects
 
-This JavaScript Mini Project Repository is a collection of small-scale projects.
+This JavaScript Mini Project Repository is a collection of small-scale projects to understand DOM manipulation.
